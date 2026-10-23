@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="920" viewBox="0 0 1600 920" role="img" aria-labelledby="title desc">
+  <title id="title">VaultShare System Architecture</title>
+  <desc id="desc">Overall architecture showing the user browser, React frontend, Flask REST API, security services, SQLite metadata database, and encrypted file storage.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M1 1 L11 6 L1 11 Z" fill="#5264d8"/></marker>
+    <marker id="arrowGreen" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M1 1 L11 6 L1 11 Z" fill="#168b68"/></marker>
+    <style>
+      .bg{fill:#f5f7fc}.panel{fill:#fff;stroke:#d9deeb;stroke-width:2}.frontend{fill:#eef1ff;stroke:#5968dc;stroke-width:2}.backend{fill:#edf7ff;stroke:#4382b7;stroke-width:2}.security{fill:#eff8f3;stroke:#45a27d;stroke-width:2}.storage{fill:#fff7e9;stroke:#d59b3a;stroke-width:2}.title{font:700 38px Arial,sans-serif;fill:#18223a}.subtitle{font:400 19px Arial,sans-serif;fill:#65718a}.heading{font:700 22px Arial,sans-serif;fill:#26334d}.body{font:400 17px Arial,sans-serif;fill:#46536d}.small{font:400 15px Arial,sans-serif;fill:#65718a}.label{font:700 14px Arial,sans-serif;fill:#5264d8;letter-spacing:1px}.line{fill:none;stroke:#5264d8;stroke-width:3;marker-end:url(#arrow)}.lineGreen{fill:none;stroke:#168b68;stroke-width:3;marker-end:url(#arrowGreen)}.dashed{stroke-dasharray:9 8}
+    </style>
+  </defs>
+  <rect class="bg" width="1600" height="920"/>
+  <text x="800" y="67" text-anchor="middle" class="title">VaultShare — System Architecture</text>
+  <text x="800" y="103" text-anchor="middle" class="subtitle">Overall structure of the secure document-sharing application</text>
+
+  <rect x="65" y="150" width="1470" height="180" rx="20" class="panel"/>
+  <text x="95" y="185" class="label">CLIENT LAYER</text>
+  <rect x="115" y="210" width="300" height="85" rx="14" class="frontend"/>
+  <text x="265" y="246" text-anchor="middle" class="heading">User</text>
+  <text x="265" y="274" text-anchor="middle" class="body">Web browser</text>
+  <rect x="650" y="210" width="420" height="85" rx="14" class="frontend"/>
+  <text x="860" y="246" text-anchor="middle" class="heading">React Frontend</text>
+  <text x="860" y="274" text-anchor="middle" class="body">Dashboard · documents · sharing controls</text>
+  <path d="M415 252 H640" class="line"/>
+  <text x="525" y="235" text-anchor="middle" class="small">HTTPS / API requests</text>
+
+  <rect x="65" y="375" width="1470" height="270" rx="20" class="panel"/>
+  <text x="95" y="410" class="label">APPLICATION LAYER</text>
+  <rect x="115" y="445" width="450" height="155" rx="14" class="backend"/>
+  <text x="340" y="481" text-anchor="middle" class="heading">Flask REST API</text>
+  <text x="340" y="516" text-anchor="middle" class="body">Authentication · document endpoints</text>
+  <text x="340" y="544" text-anchor="middle" class="body">Sharing · notifications · audit events</text>
+  <text x="340" y="576" text-anchor="middle" class="small">Validates every protected request</text>
+  <path d="M860 295 V365 H340 V435" class="line"/>
+  <text x="608" y="356" text-anchor="middle" class="small">JSON API</text>
+
+  <rect x="690" y="445" width="390" height="155" rx="14" class="security"/>
+  <text x="885" y="481" text-anchor="middle" class="heading">Security Services</text>
+  <text x="885" y="516" text-anchor="middle" class="body">Bearer-token authentication</text>
+  <text x="885" y="544" text-anchor="middle" class="body">AES-256-GCM · SHA-256 integrity</text>
+  <text x="885" y="576" text-anchor="middle" class="small">Permissions · expiry · download limits</text>
+  <path d="M565 522 H680" class="lineGreen"/>
+  <text x="622" y="505" text-anchor="middle" class="small">authorize / encrypt</text>
+  <path d="M680 555 H565" class="lineGreen"/>
+  <text x="622" y="586" text-anchor="middle" class="small">verified result</text>
+
+  <rect x="1190" y="445" width="285" height="155" rx="14" class="backend"/>
+  <text x="1332" y="481" text-anchor="middle" class="heading">Access Control</text>
+  <text x="1332" y="516" text-anchor="middle" class="body">Shares · protected links</text>
+  <text x="1332" y="544" text-anchor="middle" class="body">Expiration · revocation</text>
+  <text x="1332" y="576" text-anchor="middle" class="small">Checks every document request</text>
+  <path d="M1080 522 H1180" class="line"/>
+
+  <rect x="65" y="690" width="1470" height="175" rx="20" class="panel"/>
+  <text x="95" y="726" class="label">DATA LAYER</text>
+  <rect x="270" y="755" width="420" height="80" rx="14" class="storage"/>
+  <text x="480" y="788" text-anchor="middle" class="heading">SQLite Database</text>
+  <text x="480" y="816" text-anchor="middle" class="body">Users · document metadata · shares · audit logs</text>
+  <rect x="910" y="755" width="420" height="80" rx="14" class="storage"/>
+  <text x="1120" y="788" text-anchor="middle" class="heading">Local File Storage</text>
+  <text x="1120" y="816" text-anchor="middle" class="body">Encrypted document files</text>
+  <path d="M340 600 V660 H480 V745" class="line dashed"/>
+  <text x="376" y="680" class="small">metadata</text>
+  <path d="M885 600 V660 H1120 V745" class="lineGreen dashed"/>
+  <text x="948" y="680" class="small">encrypted file bytes</text>
+
+  <text x="800" y="895" text-anchor="middle" class="small">The backend checks access and file integrity before returning a document to an authorized user.</text>
+</svg>
